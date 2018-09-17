@@ -1,0 +1,9 @@
+{
+	"loader":"kitti15",
+	"left_path":"..../data.kitti2015/unzip/training/image_2/",
+	"disp_path":"..../kitti15/training/filtered/",
+	"gt_path":"..../data.kitti2015/unzip/training/disp_occ_0/",
+	"gt_path_noc":"..../data.kitti2015/unzip/training/disp_noc_0/",
+	"down_sample_ratio":8,
+	"epochs":50
+}

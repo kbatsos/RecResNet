@@ -1,0 +1,35 @@
+{
+	"loader":"pretrain",
+	"data":{
+
+			"freiburg":{
+						"loader":"freiburg",
+						"left_path":"..../Freiburg/driving/frames_cleanpass/15mm_focallength/scene_forwards/slow/left/",
+						"kitti_disp_path":"..../freiburg/mc-cnn-fst/kitti/filtered/",
+						"kitti15_disp_path":"..../freiburg/mc-cnn-fst/kitti15/filtered/",	
+						"gt_path":"..../Freiburg/driving/disparity/15mm_focallength/scene_forwards/slow/left/",
+						"gt_path_noc":"..../Freiburg/driving/disparity/15mm_focallength/scene_forwards/slow/left_nonocc/",
+						"down_sample_ratio":8,
+						"epochs":400
+					},
+			"kitti":{
+						"loader":"kitti",
+						"left_path":"..../data.kitti/unzip/training/image_0/",
+						"disp_path":"..../kitti12/training/filtered/",
+						"gt_path":"..../data.kitti/unzip/training/disp_occ/",
+						"gt_path_noc":"..../data.kitti/unzip/training/disp_noc/",
+						"down_sample_ratio":8,
+						"epochs":50
+					},
+			"kitti15":{
+						"loader":"kitti15",
+						"left_path":"..../data.kitti2015/unzip/training/image_2/",
+						"disp_path":"..../kitti15/training/filtered/",
+						"gt_path":"..../data.kitti2015/unzip/training/disp_occ_0/",
+						"gt_path_noc":"..../data.kitti2015/unzip/training/disp_noc_0/",
+						"down_sample_ratio":8,
+						"epochs":50
+					}
+
+		}
+}

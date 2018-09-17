@@ -1,0 +1,10 @@
+{
+	"loader":"freiburg",
+	"left_path":"..../Freiburg/driving/frames_cleanpass/15mm_focallength/scene_forwards/slow/left/",
+	"kitti_disp_path":"(disparities computes with different models)..../freiburg/mc-cnn-fst/kitti/filtered/",
+	"kitti15_disp_path":"(disparities computes with different models)..../freiburg/mc-cnn-fst/kitti15/filtered/",	
+	"gt_path":"...../Freiburg/driving/disparity/15mm_focallength/scene_forwards/slow/left/",
+	"gt_path_noc":"...../Freiburg/driving/disparity/15mm_focallength/scene_forwards/slow/left_nonocc/",
+	"down_sample_ratio":8,
+	"epochs":400
+}
