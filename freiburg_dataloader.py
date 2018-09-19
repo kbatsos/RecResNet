@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 import os
 import sys
-sys.path.insert(0,'../pylibs')
+sys.path.insert(0,'./pylibs')
 import pfmutil as pfm
 import time
 import random
