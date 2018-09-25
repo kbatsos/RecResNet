@@ -110,6 +110,8 @@ with tf.Graph().as_default():
 		elif loader_data["loader"] == "kitti15":
 			dataloader = kt2015dt(params)  
 			kitti15_dataloader = kt2015dt(params)
+		elif loader_data["loader"] == "freiburg":
+			dataloader = frdt(params)			
 			
 		else:
 			dataloader = frdt(params)
@@ -266,20 +268,20 @@ with tf.Graph().as_default():
 						print(' Validation Initial Error: '+ str(mean_init_error) + 'Validation Mean error 1: ' + str(mean_error_1) + 'Validation Mean error 2: ' + str(mean_error) )
 						return mean_error
 
+					if loader_data["loader"] != "freiburg":	
+						if loader_data["loader"] == "kitti" or loader_data["loader"] == "pretrain":
+							kt_height,kt_width,kt_channels = kitti_dataloader.get_data_size()
+							mean_error=validate(kitti_dataloader, kt_height,kt_width )	
+							v_e = sess.run( kt_val_merge, {kt_val_err:mean_error} )
+							val_writer.add_summary(v_e,1)
+							val_writer.flush()
 
-					if loader_data["loader"] == "kitti" or loader_data["loader"] == "pretrain":
-						kt_height,kt_width,kt_channels = kitti_dataloader.get_data_size()
-						mean_error=validate(kitti_dataloader, kt_height,kt_width )	
-						v_e = sess.run( kt_val_merge, {kt_val_err:mean_error} )
-						val_writer.add_summary(v_e,1)
-						val_writer.flush()
-
-					if loader_data["loader"] == "kitti15" or loader_data["loader"] == "pretrain":
-						kt15_height,kt15_width,kt15_channels = kitti15_dataloader.get_data_size()	
-						mean_error=validate(kitti15_dataloader, kt15_height,kt15_width )
-						v_e = sess.run( kt15_val_merge, {kt15_val_err:mean_error} )
-						val_writer.add_summary(v_e,1)
-						val_writer.flush()					
+						if loader_data["loader"] == "kitti15" or loader_data["loader"] == "pretrain":
+							kt15_height,kt15_width,kt15_channels = kitti15_dataloader.get_data_size()	
+							mean_error=validate(kitti15_dataloader, kt15_height,kt15_width )
+							v_e = sess.run( kt15_val_merge, {kt15_val_err:mean_error} )
+							val_writer.add_summary(v_e,1)
+							val_writer.flush()					
 
 					# if (dataloader.epoch%5 == 0) :
 					save_path = saver.save(sess, model_save,global_step=global_step)
