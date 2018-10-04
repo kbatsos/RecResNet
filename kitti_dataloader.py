@@ -7,6 +7,7 @@ from sklearn.feature_extraction import image
 
 
 import os
+import random
 
 
 class Dataloader(object):
@@ -64,18 +65,14 @@ class Dataloader(object):
 		height,width = img.shape
 
 		s = img.shape
-		if s[0] <self.__heightresize:
-			padding= self.__heightresize - s[0]
-			img = np.lib.pad(img,[(padding,0),(0,0)],'edge')
-			disp = np.lib.pad(disp,[(padding,0),(0,0)],'edge')
-			gt = np.lib.pad(gt,[(padding,0),(0,0)],'edge')
-			gt_noc = np.lib.pad(gt_noc,[(padding,0),(0,0)],'edge')
-		if s[1] <self.__widthresize:
-			padding= self.__widthresize-s[1]
-			img = np.lib.pad(img,[(0,0),(padding,0)],'edge')
-			disp = np.lib.pad(disp,[(0,0),(padding,0)],'edge')
-			gt = np.lib.pad(gt,[(0,0),(padding,0)],'edge')
-			gt_noc = np.lib.pad(gt_noc,[(0,0),(padding,0)],'edge')
+		maxheight = s[0]-256
+		maxwidth = s[1]-256
+		x = random.randint(0,maxheight)
+		y = random.randint(0,maxwidth)		
+		disp = disp[x:x+256,y:y+256]
+		img = img[x:x+256,y:y+256]
+		gt = gt[x:x+256,y:y+256]
+		gt_noc = gt_noc[x:x+256,y:y+256]		
 
 		data = np.stack([disp,img],axis=2)
 		data = np.reshape(data,[1,data.shape[0],data.shape[1],data.shape[2]])

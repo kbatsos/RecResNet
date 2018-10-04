@@ -82,8 +82,6 @@ class Dataloader(object):
 		gt_noc = scipy.misc.imread( self.__params.gt_path_noc+self.__contents[self.__sample_index]).astype(float)/256;
 
 		s = img.shape
-
-		s = img.shape
 		maxheight = s[0]-256
 		maxwidth = s[1]-256
 		x = random.randint(0,maxheight)
